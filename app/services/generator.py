@@ -15,7 +15,7 @@ def generate_response(prompt, temperature):
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            model=settings.MODEL_NAME,
+            model=settings.GEN_MODEL,
             temperature=temperature
         )
 

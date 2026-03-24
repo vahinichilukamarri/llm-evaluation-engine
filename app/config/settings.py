@@ -1,17 +1,17 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 class Settings:
     def __init__(self):
         self.GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-        self.MODEL_NAME = "llama-3.1-8b-instant"  # free + stable
 
-        # Safety check
+        # 🔥 Separate models
+        self.GEN_MODEL = "llama-3.1-8b-instant"
+        self.EVAL_MODEL = "llama-3.1-8b-instant"
+
         if not self.GROQ_API_KEY:
-            raise ValueError("GROQ_API_KEY not found in .env")
+            raise ValueError("GROQ_API_KEY not found")
 
-# Create a reusable instance
 settings = Settings()
