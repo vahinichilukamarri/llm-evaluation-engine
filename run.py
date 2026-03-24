@@ -1,8 +1,12 @@
 from app.services.generator import generate_multiple_responses
 from app.services.evaluator import evaluate_multiple_responses
+from app.services.comparator import rank_responses, get_best_response
 
 
 def get_user_responses():
+    """
+    Allows user to input multiple responses manually
+    """
     responses = []
 
     try:
@@ -29,6 +33,10 @@ def main():
 
     prompt = input("\nEnter your prompt: ")
 
+    if not prompt.strip():
+        print("❌ Prompt cannot be empty")
+        return
+
     print("\nChoose mode:")
     print("1. Generate responses")
     print("2. Enter your own responses")
@@ -45,16 +53,34 @@ def main():
         print("Invalid choice")
         return
 
+    if not responses:
+        print("No responses to evaluate")
+        return
+
     print("\n🔍 Evaluating responses...\n")
 
     evaluated_results = evaluate_multiple_responses(prompt, responses)
 
-    for i, item in enumerate(evaluated_results):
-        print(f"\n--- Response {i+1} ---")
+    print("\n📊 Ranking responses...\n")
+
+    ranked_results = rank_responses(evaluated_results)
+    best = get_best_response(ranked_results)
+
+    print("\n🏆 Ranked Responses:\n")
+
+    for i, item in enumerate(ranked_results):
+        print(f"\n--- Rank {i+1} ---")
+        print(f"Score: {item['final_score']}")
+
+        print("\nResponse:")
         print(item["response"])
 
         print("\nEvaluation:")
         print(item["evaluation"])
+
+    print("\n🔥 BEST RESPONSE:\n")
+    print(best["response"])
+    print(f"\nScore: {best['final_score']}")
 
 
 if __name__ == "__main__":
