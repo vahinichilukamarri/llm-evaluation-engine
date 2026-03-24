@@ -1,6 +1,7 @@
 from app.services.generator import generate_multiple_responses
 from app.services.evaluator import evaluate_multiple_responses
 from app.services.comparator import rank_responses, get_best_response
+from app.services.judge import compare_responses
 
 
 def get_user_responses():
@@ -81,6 +82,22 @@ def main():
     print("\n🔥 BEST RESPONSE:\n")
     print(best["response"])
     print(f"\nScore: {best['final_score']}")
+
+    # 🔥 NEW: Comparative Judge
+    print("\n🧠 Running comparative judge...\n")
+
+    comparison_result = compare_responses(prompt, responses)
+
+    print("📊 Comparative Ranking (LLM Judge):")
+
+    if isinstance(comparison_result, dict):
+        if "ranking" in comparison_result:
+            print("\n🏆 Judge Ranking Order:", comparison_result["ranking"])
+            print("📝 Reason:", comparison_result.get("reason", "No reason provided"))
+        else:
+            print(comparison_result)
+    else:
+        print(comparison_result)
 
 
 if __name__ == "__main__":
