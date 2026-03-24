@@ -34,7 +34,7 @@ Responses:
 Return ONLY JSON:
 
 {{
-  "ranking": [best, second, third],
+  "ranking": [1, 2, 3],
   "reason": "explanation"
 }}
 """
