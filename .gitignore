@@ -1,0 +1,34 @@
+# 🔐 Environment variables (VERY IMPORTANT)
+.env
+
+# 🐍 Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 📦 Virtual environment
+venv/
+env/
+
+# 🧪 Logs (future use)
+logs/
+
+# 🧾 OS files
+.DS_Store
+Thumbs.db
+
+# 🧰 IDE files
+.vscode/
+.idea/
+
+# 📊 Data files (optional - if large later)
+*.csv
+*.json
+
+# 🧠 MLflow (future phase)
+mlruns/
+
+# 🔄 Temporary files
+*.log
+*.tmp
