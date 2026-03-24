@@ -10,8 +10,8 @@ def calculate_score(evaluation):
         bias = evaluation.get("bias", 0)
 
         final_score = (
-            0.3 * relevance +
-            0.3 * factuality +
+            0.35 * relevance +
+            0.35 * factuality +
             0.2 * completeness +
             0.2 * bias
         )
