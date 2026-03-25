@@ -7,6 +7,7 @@ Phase 1: Response Generation
 - Uses Groq API (Llama 3)
 - Temperature-based variation
 
+Phase 2 and 3 done.
 ## Run
 
 pip install -r requirements.txt
